@@ -6,7 +6,10 @@ import java.awt.Graphics;
 import com.vraj.narutogame.Game;
 import com.vraj.narutogame.gfx.Assets;
 
+
 public class Player extends Creature{
+	
+	//private pauseMenu menu;
 	private Game game;
 	
 	public Player(Game game, float x, float y) {
@@ -36,6 +39,9 @@ public class Player extends Creature{
 		
 		if (game.getKeyManager().right)
 			xMove = speed;
+		
+		//if (game.getKeyManager().esc)
+			//menu = new pauseMenu(game);
 	}
 
 	@Override

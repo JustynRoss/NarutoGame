@@ -1,4 +1,6 @@
 package com.vraj.narutogame.map;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import com.vraj.narutogame.tiles.Tile;
@@ -72,6 +74,8 @@ public class Map {
 		    Tile.tiles[9].render(g, 987, 450, 50, 50);
 		    Tile.tiles[10].render(g, 887, 450, 100, 50);
 		    Tile.tiles[11].render(g, 837, 400, 50, 100);
+		    
+		    
 
 	}
 	
@@ -83,7 +87,6 @@ public class Map {
 			return Tile.hedgeTile;
 		return t;
 	}
-
 */
 
 /*	private void loadWorld(String path) {
@@ -104,4 +107,3 @@ public class Map {
 	}*/
 
 }
-

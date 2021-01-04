@@ -1,5 +1,6 @@
 package com.vraj.narutogame;
 
+//import com.vraj.narutogame.input.EscapeKey;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -8,9 +9,13 @@ import com.vraj.narutogame.gfx.Assets;
 import com.vraj.narutogame.input.KeyManager;
 import com.vraj.narutogame.states.GameState;
 import com.vraj.narutogame.states.MenuState;
+import com.vraj.narutogame.states.PauseState;
+import com.vraj.narutogame.states.CharacterState;
 import com.vraj.narutogame.states.State;
 
 public class Game implements Runnable {
+	
+	private int fps = 60;
 
 	private Display display;
 	public int width, height;
@@ -24,20 +29,23 @@ public class Game implements Runnable {
 	private Graphics g;
 
 	//States
-	private State gameState;
-	private State menuState;
+	public State gameState;
+	public State menuState;
+	public State pauseState;
+	public State characterState;
 	
 	private KeyManager keyManager;
+	//private EscapeKey escapeKey;//
 	
 	private Handler handler;
 
-	public Game(String title, int width, int height) {
-
+	public Game(String title, int width, int height, int fps) {
+		this.fps = fps;
 		this.width = width;
-		this.height = height;
+		this.height = height; 
 		this.title = title;
 		keyManager = new KeyManager();
-
+		//escapeKey = new EscapeKey();//
 	}
 
 	public void run() {
@@ -46,7 +54,7 @@ public class Game implements Runnable {
 
 		//frames per second
 		//amount of times the update and rendor method are called
-		int fps = 60;
+		//fps = 120;
 		//1 second divided by fps
 		//maximum time allowed to run 60 fps
 		double timePerTick = 1000000000 / fps;
@@ -78,11 +86,14 @@ public class Game implements Runnable {
 
 		stop();
 
-	}
+	} 
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
 	}
+	/*public EscapeKey getEscapeKey() {
+		return escapeKey;
+	}*/
 
 	private void init() {
 
@@ -94,7 +105,9 @@ public class Game implements Runnable {
 		//game state object
 		gameState = new GameState(this);
 		menuState = new MenuState(this);
-		State.setState(gameState);
+		pauseState = new PauseState(this);
+		characterState = new CharacterState(this);
+		State.setState(menuState);//start in menu 
 		
 
 	}
@@ -103,6 +116,8 @@ public class Game implements Runnable {
 	private void update() {
 		keyManager.updatePlayer();
 		keyManager.updateOpponent();
+		keyManager.checkEscape();
+		//escapeKey.checkEsc();//
 		if(State.getState() != null) {
 			State.getState().update();
 		}
@@ -163,6 +178,13 @@ public int getHeight() {
 		
 		return height;
 	}
+
+public int getFps() {
+	return fps;
+}
+public void setFps(int fps) {
+	this.fps = fps;
+}
 
 
 

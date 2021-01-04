@@ -1,10 +1,13 @@
 package com.vraj.narutogame.states;
 
 import java.awt.Graphics;
+import java.io.IOException;
+
+import javax.swing.JPanel;
 
 import com.vraj.narutogame.Game;
 
-public abstract class State {
+public abstract class State{
 	
 	
 	private static State currentState = null;
@@ -27,7 +30,6 @@ public abstract class State {
 	
 	public abstract void update();
 	
-	public abstract void render(Graphics g);
+	public abstract void render(Graphics g) ;
 
 }
-

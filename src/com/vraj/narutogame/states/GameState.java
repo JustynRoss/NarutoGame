@@ -1,15 +1,16 @@
 package com.vraj.narutogame.states;
 
-
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import com.vraj.narutogame.Game;
 import com.vraj.narutogame.Handler;
 import com.vraj.narutogame.entities.creatures.Opponent;
 import com.vraj.narutogame.entities.creatures.Player;
+import com.vraj.narutogame.gfx.ImageLoader;
 import com.vraj.narutogame.map.Map;
 import com.vraj.narutogame.tiles.Tile;
-
+//import com.vraj.narutogame.input.EscapeKey;
 
 public class GameState extends State {
 
@@ -17,7 +18,7 @@ public class GameState extends State {
 
 	private Opponent player2;
 	
-	
+	//private EscapeKey escapeKey;
 
 	private Map map;
 	private Map map2;
@@ -29,11 +30,16 @@ public class GameState extends State {
 		map = new Map();
 		//map2 = new Map("resources/map/map2.txt");
 		//map3 = new Map("resources/map/map3.txt");
-
+		
+		 //Frame f=new Frame("Button Example");  
+		    //Button b=new Button("Click Here");  
+		    //b.setBounds(50,100,80,30);  
+		    //map.add(b);   
+		    
 		player = new Player(game, 100,100);
-		player2 = new Opponent(game, 0, 0);
+		player2 = new Opponent(game, 1000, 110);
 		
-		
+		//escapeKey = new EscapeKey();
 		
 
 
@@ -51,13 +57,19 @@ public class GameState extends State {
 		//tile.update();
 		//tile2.update();
 
+		//escapeKey.checkEsc();
+		if(game.getKeyManager().esc) {
+			//State.setState(game.menuState);
+			State.setState(game.pauseState);
+		}
 
 	}
+	
 
 	@Override
 	public void render(Graphics g) {
-		
-		
+		BufferedImage img1 = (ImageLoader.loadImage("/images/mudground.png"));
+		g.drawImage(img1, 0, 0, null);
 		//tile2.render2(g);
 		
 		
@@ -68,6 +80,20 @@ public class GameState extends State {
 		//tile.render(g, 0, 0, 640, 480);
 		
 		map.render(g);
+		
+		g.fillRoundRect(0, 0, 50, 50, 50, 50);
+		g.setColor(Color.WHITE);
+		g.fillRect(15, 10, 7, 30);
+		g.fillRect(30, 10, 7, 30);
+		
+		
+		g.setColor(Color.BLACK);
+		g.fillRect(50, 0, 135, 20);
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Geeza Pro", Font.BOLD, 13));
+		g.drawString("[esc] for Pause Menu", 53, 12);
+		g.drawString(game.getFps()+"FPS", 1100, 20);
+		
 		
 	  //  map2.render(g);
 	    
@@ -140,4 +166,3 @@ public class GameState extends State {
 
 
 }
-

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 import org.imgscalr.Scalr;
 
-import net.coobird.thumbnailator.Thumbnails;
+//import net.coobird.thumbnailator.Thumbnails;
 
 
 public class Assets {

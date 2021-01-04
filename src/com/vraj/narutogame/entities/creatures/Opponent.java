@@ -1,11 +1,13 @@
 package com.vraj.narutogame.entities.creatures;
 
+
 import java.awt.Graphics;
 
 import com.vraj.narutogame.Game;
 import com.vraj.narutogame.gfx.Assets;
 
 public class Opponent extends Creature{
+	
 	private Game game;
 	
 	public Opponent(Game game, float x, float y) {
@@ -45,4 +47,3 @@ public class Opponent extends Creature{
 	}
 
 }
-
