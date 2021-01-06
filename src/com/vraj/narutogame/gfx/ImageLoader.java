@@ -21,6 +21,7 @@ public class ImageLoader {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			//System.out.println("1");
 			System.exit(1);
 		}
 		return null;
@@ -45,3 +46,5 @@ public class ImageLoader {
 
 
 }
+
+

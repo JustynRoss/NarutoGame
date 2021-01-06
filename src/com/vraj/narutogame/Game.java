@@ -14,7 +14,7 @@ import com.vraj.narutogame.states.CharacterState;
 import com.vraj.narutogame.states.State;
 
 public class Game implements Runnable {
-	
+
 	private int fps = 60;
 
 	private Display display;
@@ -33,10 +33,10 @@ public class Game implements Runnable {
 	public State menuState;
 	public State pauseState;
 	public State characterState;
-	
+
 	private KeyManager keyManager;
 	//private EscapeKey escapeKey;//
-	
+
 	private Handler handler;
 
 	public Game(String title, int width, int height, int fps) {
@@ -76,7 +76,7 @@ public class Game implements Runnable {
 				ticks++;
 				delta--;
 			}
-			
+
 			/*if (timer >= 1000000000) {
 				System.out.println("Ticks and Frames: " + ticks);
 				ticks = 0;
@@ -87,7 +87,7 @@ public class Game implements Runnable {
 		stop();
 
 	} 
-	
+
 	public KeyManager getKeyManager() {
 		return keyManager;
 	}
@@ -100,19 +100,19 @@ public class Game implements Runnable {
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
-		
+
 		handler = new Handler(this);
 		//game state object
-		gameState = new GameState(this);
-		menuState = new MenuState(this);
-		pauseState = new PauseState(this);
-		characterState = new CharacterState(this);
+		gameState = new GameState(handler);
+		menuState = new MenuState(handler);
+		pauseState = new PauseState(handler);
+		characterState = new CharacterState(handler);
 		State.setState(menuState);//start in menu 
-		
+
 
 	}
 
-	
+
 	private void update() {
 		keyManager.updatePlayer();
 		keyManager.updateOpponent();
@@ -121,7 +121,7 @@ public class Game implements Runnable {
 		if(State.getState() != null) {
 			State.getState().update();
 		}
-		
+
 
 	}
 
@@ -137,11 +137,11 @@ public class Game implements Runnable {
 		g.clearRect(0, 0, width, height);
 
 		//Draw here
-		
+
 		if(State.getState() != null) {
 			State.getState().render(g);
 		}
-		
+
 		//End drawing
 		bs.show();
 		g.dispose();
@@ -170,21 +170,21 @@ public class Game implements Runnable {
 	}
 
 	public int getWidth() {
-		
+
 		return width;
 	}
-	
-public int getHeight() {
-		
+
+	public int getHeight() {
+
 		return height;
 	}
 
-public int getFps() {
-	return fps;
-}
-public void setFps(int fps) {
-	this.fps = fps;
-}
+	public int getFps() {
+		return fps;
+	}
+	public void setFps(int fps) {
+		this.fps = fps;
+	}
 
 
 

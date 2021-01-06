@@ -1,7 +1,7 @@
 package com.vraj.narutogame.display;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Canvas;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
@@ -12,8 +12,6 @@ public class Display {
 	
 	private String title;
 	private int width, height;
-	
-	
 	
 	public Display(String title, int width, int height) {
 		this.title = title;
@@ -41,12 +39,9 @@ public class Display {
 		canvas.setFocusable(false);
 		
 		frame.add(canvas);
-		frame.pack(); 
+		frame.pack();
 
 	}
-
-
-	
 	
 	public Canvas getCanvas() {
 		return canvas;
@@ -58,3 +53,4 @@ public class Display {
 	
 
 }
+

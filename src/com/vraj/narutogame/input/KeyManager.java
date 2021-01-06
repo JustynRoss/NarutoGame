@@ -12,7 +12,7 @@ public class KeyManager implements KeyListener {
 	private boolean[] keys;
 	public boolean up, down, left, right;
 	public boolean up2, down2, left2, right2;
-	public boolean esc, spc, res, shf, back, one, two, thr, fou, fiv, six;
+	public boolean esc, spc, res, shf, back, one, two, thr, fou, fiv, six, e;
 	
 	//public String printer = "";
 	  
@@ -48,6 +48,7 @@ public class KeyManager implements KeyListener {
 		fou = keys[KeyEvent.VK_4];
 		fiv = keys[KeyEvent.VK_5];
 		six = keys[KeyEvent.VK_6];
+		e = keys[KeyEvent.VK_E];
 	}
 	
 	public void updateOpponent() {

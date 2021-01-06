@@ -1,18 +1,16 @@
 package com.vraj.narutogame.entities.creatures;
 
-
 import java.awt.Graphics;
 
-import com.vraj.narutogame.Game;
+import com.vraj.narutogame.Handler;
 import com.vraj.narutogame.gfx.Assets;
 
 public class Opponent extends Creature{
 	
-	private Game game;
 	
-	public Opponent(Game game, float x, float y) {
-		super(x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-		this.game = game;
+	public Opponent(Handler handler, float x, float y) {
+		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+		
 	}
 
 	@Override
@@ -26,16 +24,16 @@ public class Opponent extends Creature{
 		xMove = 0;
 		yMove = 0;
 		
-		if (game.getKeyManager().up2)
+		if (handler.getKeyManager().up2)
 			yMove = -speed;
 		
-		if (game.getKeyManager().down2)
+		if (handler.getKeyManager().down2)
 			yMove = speed;
 		
-		if (game.getKeyManager().left2)
+		if (handler.getKeyManager().left2)
 			xMove = -speed;
 		
-		if (game.getKeyManager().right2)
+		if (handler.getKeyManager().right2)
 			xMove = speed;
 	}
 
@@ -47,3 +45,4 @@ public class Opponent extends Creature{
 	}
 
 }
+
